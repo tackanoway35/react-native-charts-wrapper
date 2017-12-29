@@ -31,7 +31,7 @@ public class PieDataExtract extends DataExtract<PieData, PieEntry> {
     @Override
     void dataSetConfig(IDataSet<PieEntry> dataSet, ReadableMap config) {
         PieDataSet pieDataSet = (PieDataSet) dataSet;
-        pieDataSet.setXValuePosition(PieDataSet.ValuePosition.INSIDE_SLICE);
+        pieDataSet.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
         pieDataSet.setValueLinePart1Length(1f);
         pieDataSet.setValueLinePart2Length(1f);
         pieDataSet.setValueLineWidth(0.5f);
