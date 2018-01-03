@@ -21,6 +21,9 @@ class RNPieChartView: RNChartViewBase {
 
         self._chart = PieChartView(frame: frame)
         self._dataExtract = PieDataExtract()
+        _dataExtract.xValuePosition = .outsideSlice;
+        _dataExtract.valueLinePart1Length = CGFloat(1.0f);
+        _dataExtract.valueLinePart2Length = CGFloat(1.0f);
 
         super.init(frame: frame)
 
