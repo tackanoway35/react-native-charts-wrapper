@@ -30,7 +30,7 @@ class RNPieChartView: RNChartViewBase {
 
         self._chart.delegate = self
         self.addSubview(_chart)
-        self._chart.drawEntryLabelsEnabled = true
+//         self._chart.drawEntryLabelsEnabled = true
     }
 
     required init?(coder aDecoder: NSCoder) {
