@@ -37,7 +37,11 @@ class RNPieChartView: RNChartViewBase {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setDrawSliceText(_ enabled: Bool) {
+//     func setDrawSliceText(_ enabled: Bool) {
+//         chart.drawEntryLabelsEnabled = enabled
+//     }
+    
+    func setDrawEntryLabels(_ enabled: Bool) {
         chart.drawEntryLabelsEnabled = enabled
     }
 
