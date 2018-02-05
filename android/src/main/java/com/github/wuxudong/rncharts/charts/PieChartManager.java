@@ -22,7 +22,8 @@ public class PieChartManager extends ChartBaseManager<PieChart, PieEntry> {
     @Override
     protected PieChart createViewInstance(ThemedReactContext reactContext) {
         PieChart pieChart =  new PieChart(reactContext);
-        pieChart.setDrawEntryLabels(true);
+//         pieChart.setDrawEntryLabels(true);
+        pieChart.setExtraOffsets(0, 5, 0, 5);
         pieChart.setOnChartValueSelectedListener(new RNOnChartValueSelectedListener(pieChart));
         pieChart.setOnChartGestureListener(new RNOnChartGestureListener(pieChart));
         return pieChart;
