@@ -30,6 +30,7 @@ class RNPieChartView: RNChartViewBase {
 
         self._chart.delegate = self
         self.addSubview(_chart)
+        self._chart.setExtraOffsets(left: 0, top: 5, right: 0, bottom: 5)
 //         self._chart.drawEntryLabelsEnabled = true
     }
 
