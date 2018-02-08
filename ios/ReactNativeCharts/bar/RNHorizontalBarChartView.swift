@@ -32,4 +32,9 @@ class RNHorizontalBarChartView: RNBarChartViewBase {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+  
+    func setExtraOffsets(_ offSets: [Float]) {
+        self._chart.setExtraOffsets(left: CGFloat(offSets[0]), top: CGFloat(offSets[1]), right: CGFloat(offSets[2]), bottom: CGFloat(offSets[3]))
+    }
+ 
 }
