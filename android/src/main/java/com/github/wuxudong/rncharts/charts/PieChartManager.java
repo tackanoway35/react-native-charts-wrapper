@@ -1,5 +1,8 @@
 package com.github.wuxudong.rncharts.charts;
 
+import android.util.Log;
+
+import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReadableType;
 import com.facebook.react.uimanager.ThemedReactContext;
@@ -12,6 +15,11 @@ import com.github.wuxudong.rncharts.listener.RNOnChartGestureListener;
 import com.github.wuxudong.rncharts.listener.RNOnChartValueSelectedListener;
 import com.github.wuxudong.rncharts.utils.BridgeUtils;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class PieChartManager extends ChartBaseManager<PieChart, PieEntry> {
 
     @Override
@@ -22,8 +30,6 @@ public class PieChartManager extends ChartBaseManager<PieChart, PieEntry> {
     @Override
     protected PieChart createViewInstance(ThemedReactContext reactContext) {
         PieChart pieChart =  new PieChart(reactContext);
-//         pieChart.setDrawEntryLabels(true);
-        pieChart.setExtraOffsets(0, 5, 0, 5);
         pieChart.setOnChartValueSelectedListener(new RNOnChartValueSelectedListener(pieChart));
         pieChart.setOnChartGestureListener(new RNOnChartGestureListener(pieChart));
         return pieChart;
@@ -37,6 +43,12 @@ public class PieChartManager extends ChartBaseManager<PieChart, PieEntry> {
     @ReactProp(name = "drawEntryLabels")
     public void setDrawSliceText(PieChart chart, boolean enabled) {
         chart.setDrawEntryLabels(enabled);
+    }
+
+    @ReactProp(name = "extraOffsets")
+    public void setExtraOffsets(PieChart chart, ReadableArray array) {
+        chart.setExtraOffsets((float) array.getDouble(0), (float) array.getDouble(1),
+                (float) array.getDouble(2), (float) array.getDouble(3));
     }
 
     @ReactProp(name = "usePercentValues")
