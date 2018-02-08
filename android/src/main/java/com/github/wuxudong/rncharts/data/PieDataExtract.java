@@ -35,15 +35,9 @@ public class PieDataExtract extends DataExtract<PieData, PieEntry> {
         PieDataSet pieDataSet = (PieDataSet) dataSet;
         ChartDataSetConfigUtils.commonConfig(pieDataSet, config);
 
-        // PieDataSet only config
-        if (BridgeUtils.validate(config, ReadableType.Number, "sliceSpace")) {
-            pieDataSet.setSliceSpace((float) config.getDouble("sliceSpace"));
-        }
-        if (BridgeUtils.validate(config, ReadableType.Number, "selectionShift")) {
-            pieDataSet.setSelectionShift((float) config.getDouble("selectionShift"));
-        }
         if (BridgeUtils.validate(config, ReadableType.Boolean, "xValuePosition")) {
-            if (config.getBoolean("xValuePosition")) {
+            Boolean isDrawOutSide = config.getBoolean("xValuePosition");
+            if (isDrawOutSide == true) {
                 pieDataSet.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
             } else {
                 pieDataSet.setXValuePosition(PieDataSet.ValuePosition.INSIDE_SLICE);
@@ -53,14 +47,21 @@ public class PieDataExtract extends DataExtract<PieData, PieEntry> {
             String hex = config.getString("valueLineColor");
             pieDataSet.setValueLineColor(Color.parseColor(hex));
         }
-        if (BridgeUtils.validate(config, ReadableType.String, "valueLineWidth")) {
+        if (BridgeUtils.validate(config, ReadableType.Number, "valueLineWidth")) {
             pieDataSet.setValueLineWidth((float) config.getDouble("valueLineWidth"));
         }
-        if (BridgeUtils.validate(config, ReadableType.String, "valueLinePart1Length")) {
-            pieDataSet.setValueLineWidth((float) config.getDouble("valueLinePart1Length"));
+        if (BridgeUtils.validate(config, ReadableType.Number, "valueLinePart1Length")) {
+            pieDataSet.setValueLinePart1Length((float) config.getDouble("valueLinePart1Length"));
         }
-        if (BridgeUtils.validate(config, ReadableType.String, "valueLinePart2Length")) {
-            pieDataSet.setValueLineWidth((float) config.getDouble("valueLinePart2Length"));
+        if (BridgeUtils.validate(config, ReadableType.Number, "valueLinePart2Length")) {
+            pieDataSet.setValueLinePart2Length((float) config.getDouble("valueLinePart2Length"));
+        }
+        // PieDataSet only config
+        if (BridgeUtils.validate(config, ReadableType.Number, "sliceSpace")) {
+            pieDataSet.setSliceSpace((float) config.getDouble("sliceSpace"));
+        }
+        if (BridgeUtils.validate(config, ReadableType.Number, "selectionShift")) {
+            pieDataSet.setSelectionShift((float) config.getDouble("selectionShift"));
         }
     }
 
