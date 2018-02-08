@@ -1,5 +1,7 @@
 package com.github.wuxudong.rncharts.data;
 
+import android.graphics.Color;
+
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReadableType;
@@ -31,10 +33,6 @@ public class PieDataExtract extends DataExtract<PieData, PieEntry> {
     @Override
     void dataSetConfig(IDataSet<PieEntry> dataSet, ReadableMap config) {
         PieDataSet pieDataSet = (PieDataSet) dataSet;
-        pieDataSet.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
-        pieDataSet.setValueLinePart1Length(1f);
-        pieDataSet.setValueLinePart2Length(1f);
-        pieDataSet.setValueLineWidth(0.5f);
         ChartDataSetConfigUtils.commonConfig(pieDataSet, config);
 
         // PieDataSet only config
@@ -43,6 +41,26 @@ public class PieDataExtract extends DataExtract<PieData, PieEntry> {
         }
         if (BridgeUtils.validate(config, ReadableType.Number, "selectionShift")) {
             pieDataSet.setSelectionShift((float) config.getDouble("selectionShift"));
+        }
+        if (BridgeUtils.validate(config, ReadableType.Boolean, "xValuePosition")) {
+            if (config.getBoolean("xValuePosition")) {
+                pieDataSet.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
+            } else {
+                pieDataSet.setXValuePosition(PieDataSet.ValuePosition.INSIDE_SLICE);
+            }
+        }
+        if (BridgeUtils.validate(config, ReadableType.String, "valueLineColor")) {
+            String hex = config.getString("valueLineColor");
+            pieDataSet.setValueLineColor(Color.parseColor(hex));
+        }
+        if (BridgeUtils.validate(config, ReadableType.String, "valueLineWidth")) {
+            pieDataSet.setValueLineWidth((float) config.getDouble("valueLineWidth"));
+        }
+        if (BridgeUtils.validate(config, ReadableType.String, "valueLinePart1Length")) {
+            pieDataSet.setValueLineWidth((float) config.getDouble("valueLinePart1Length"));
+        }
+        if (BridgeUtils.validate(config, ReadableType.String, "valueLinePart2Length")) {
+            pieDataSet.setValueLineWidth((float) config.getDouble("valueLinePart2Length"));
         }
     }
 
