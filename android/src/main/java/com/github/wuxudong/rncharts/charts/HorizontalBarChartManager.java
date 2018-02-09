@@ -30,7 +30,7 @@ public class HorizontalBarChartManager extends BarChartManager {
     }
 
     @ReactProp(name = "extraOffsets")
-    public void setExtraOffsets(PieChart chart, ReadableArray array) {
+    public void setExtraOffsets(BarChart chart, ReadableArray array) {
         chart.setExtraOffsets((float) array.getDouble(0), (float) array.getDouble(1),
                 (float) array.getDouble(2), (float) array.getDouble(3));
     }
